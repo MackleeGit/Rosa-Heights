@@ -1,14 +1,23 @@
 
+
+
 /* Section for Admin/Caretaker Signup CTA*/
 .cta {
     padding: 50px 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .cta p {
     font-size: 1.2em;
     line-height: 1.5;
     color: #555;
+}
+
+.nav-item {
+    align-self: center;
+
 }
 
 
