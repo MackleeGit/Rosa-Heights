@@ -1,0 +1,35 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: var(--background-color);
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    color: #333;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.contact-info i {
+    margin-right: 8px;
+}

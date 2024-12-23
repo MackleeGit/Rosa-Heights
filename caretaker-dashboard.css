@@ -1,0 +1,80 @@
+/* Flexbox Layout for Dashboard */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+   
+}
+
+.testdiv{
+    background-color: green;
+    width: 600px;
+}
+
+/* Top Section */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Widgets Styling */
+.widget {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.widget small {
+    font-size: 14px;
+    color: var(--dark-blue);
+    text-transform: uppercase;
+}
+
+.widget h1 {
+    font-size: 36px;
+    color: var(--vivid-blue);
+}
+
+/* Bottom Section */
+.bottom-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.chart-column {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pie-section {
+
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: fit-content; 
+    margin: 0 auto;
+}
+    
+
+
+/* Canvas Styling */
+canvas {
+    width: 100%;
+    height: auto;
+}

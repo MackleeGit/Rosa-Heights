@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "rosa-heights",
+    "rosa-heights": "rosa-heights"
+  },
+  "targets": {},
+  "etags": {}
+}

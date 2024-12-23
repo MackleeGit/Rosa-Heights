@@ -1,0 +1,324 @@
+/* Root Colors for consistency */
+ :root {
+        --dark-blue: #2c3e50;          /* Primary dark blue-gray for text and headings */
+        --vivid-blue: #2980b9;         /* Secondary bold blue for accents and buttons */
+        --light-gray: #ecf0f1;         /* Background color for the page */
+        --dark-gray-blue: #34495e;    /* Footer background color */
+        --hover-blue: #6eb2ff;         /* Bright blue for hover effects */
+}
+    
+
+/* General Styles */
+body {
+        font-family: 'Arial', sans-serif;
+        background-color: var(--light-gray);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100%;
+        color: var(--dark-blue);
+}
+
+html{
+    margin: 0;
+    padding: 0;
+}
+    
+/* General Button Configs*/
+button {
+    height: 50px;
+    width: 200px;
+    background-color: var(--dark-blue);
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+}
+
+
+/* Head Bar Styles */
+.head-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-blue);
+    color: white;
+    width: 100%;
+    padding: 10px 20px;
+    padding-right: 30px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transition: transform 0.3 ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    
+
+
+}
+
+.head-container h5 {
+    margin: 0 auto;
+    font-size: 1.5em;
+}
+
+.user-info{
+    transition: transform 0.3s ease;
+}
+
+.user-info:hover{
+transform: scale(1.05);
+}
+
+
+
+/*Navigation Bar*/
+.navbar{
+background-color: #011931;
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+padding-left:  20px;
+padding-right: 20px;
+
+flex-wrap: wrap;
+
+padding: 10px 0;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+margin: 0;
+overflow: hidden;
+}
+
+.nav-item {
+    height: 40px;
+    padding: 10px 20px;
+    margin: 5px;
+    background: linear-gradient(145deg, #022244, #011931);
+    width: 200px;
+    box-shadow: 4px 4px 8px #000, -4px -4px 8px #123456;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.5s ease, transform 0.3s ease;
+}
+
+
+.nav-item:hover{
+    background-color: var(--hover-blue);
+    color: var(--dark-blue);
+    transform: scale(1.05);
+
+}
+
+.nav-item span {
+    color: transparent;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+    background: var(--vivid-blue);
+    color: white;
+    text-align: center;
+    padding: 20px ;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-banner h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.welcome-banner p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+
+
+/* Sidebar */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent */
+    z-index: 1000; /* Below the sidebar */
+    display: none; /* Hidden by default */
+}
+
+/* Active Overlay */
+.overlay.active {
+    display: block; /* Show overlay */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #022244;
+    color: white;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease;
+    z-index: 1100;
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #fff;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+}
+
+.sidebar-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #123456;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--hover-blue);
+}
+
+/*Basic Form Styles*/
+.form-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: auto;
+    text-align: center;
+}
+
+/* Title */
+.form-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #a1a1a1;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+input:focus {
+    border-color: #3498db;
+    outline: none;
+    background-color: #ffffff;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: var(--dark-blue);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 20px;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.9s ease background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--hover-blue);
+    transform: scale(1.03);
+    color: var(--dark-blue);
+}
+
+
+
+
+/* Footer Styling */
+footer {
+    background-color: var(--dark-gray-blue);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.contact-info i {
+    margin-right: 10px;
+}

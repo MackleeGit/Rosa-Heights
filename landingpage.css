@@ -1,0 +1,53 @@
+
+/* Section for Admin/Caretaker Signup CTA*/
+.cta {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.cta p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #555;
+}
+
+
+/* About Section */
+.about {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-list {
+    background-color: var(--vivid-blue);
+    color: white;
+    padding: 20px;
+    margin-left: 45px;
+    width: 45%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-list h5 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.about-list ol {
+    font-size: 1.2em;
+}
+
+.about-list li {
+    padding: 10px;
+}
+
+.about-img {
+    width: 400px;
+    height: 400px;
+    margin-right: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+

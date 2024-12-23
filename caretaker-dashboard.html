@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosa Heights Management System: Caretaker Dashboard</title>
+    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="caretaker-dashboard.css">
+     <link rel="icon" href="logo-inv.png" type="image/x-icon"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+</head>
+<body>
+  
+    <div class="head-container">
+        <img class="logo" src="logo-inv.png" alt="Logo">
+        <h5>ROSA HEIGHTS MANAGEMENT SYSTEM</h5>
+        <div class="user-info">
+            <small>Logged in as:</small>
+            <h3>Name: Caretaker</h3>
+            
+        </div>
+        
+    </div>
+    <div class="navbar">
+        <a class="nav-item" href="">View Registered Tenants</a>
+        <a class="nav-item" href="">This Month's Due Payments</a>
+        <a class="nav-item" href="">View and Handle Past Overdue Payments</a>
+        <a class="nav-item" href="">View Payment History</a>
+        <div class="overlay" id="overlay"></div>
+        <a class="nav-item" id="sidebarToggle" href="#"><i class="fas fa-bars"></i><span>aaa </span> More</a>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>More Options</h3>
+            <button id="sidebarClose"><i class="fas fa-times"></i></button>
+        </div>
+        <ul>
+            <li><a href="#">Info</a></li>
+            <li><a href="#">Log Out</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+
+
+    <!-- Welcome Banner -->
+<div class="welcome-banner">
+    <h2>Welcome Back, Caretaker!</h2>
+    <p>Manage tenant info here!</p>
+</div>
+
+    <div class="dashboard-container">
+        <div class="top-section">
+            <div class="widget" id="total-tenants">
+                <small>total tenants</small>
+                <h1 id="tenant-count">42</h1>
+            </div>
+            <div class="widget" id="overdue-payments">
+                <small>overdue payment records</small>
+                <h1 id="overdue-count">15</h1>
+            </div>
+            <div class="widget">
+                <small>date</small>
+                <h1 id="current-date">December 22, 2024</h1>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="chart-column">
+                <canvas id="overduePaymentsChart"></canvas>
+            </div>
+            <div class="chart-column">
+                <canvas id="tenantGrowthChart"></canvas>
+            </div>
+        </div>
+        <div class="pie-section">
+            <canvas id="paymentTypesChart"></canvas>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <p><i class="fas fa-phone-alt"></i> +123 456 789</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Rosa Heights St, Cityville</p>
+                <p><i class="fas fa-envelope"></i> info@rosaheights.com</p>
+            </div>
+        </div>
+    </footer>
+
+    `<script>
+
+        //Sidebar Info
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        sidebarClose.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click',()=>{
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+
+        })
+
+
+
+        // Display Current Date
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-GB');
+
+        // Widgets Data
+        document.getElementById('tenant-count').textContent = 45; // Example tenant count
+        document.getElementById('overdue-count').textContent = 12; // Example overdue count
+
+        // Bar Chart: Overdue Payments
+        const ctxOverdue = document.getElementById('overduePaymentsChart').getContext('2d');
+        new Chart(ctxOverdue, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Overdue Payments',
+                    data: [5, 7, 8, 6, 12],
+                    backgroundColor: 'rgba(41, 128, 185, 0.7)',
+                    borderColor: 'rgba(41, 128, 185, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Line Chart: Tenant Growth
+        const ctxTenant = document.getElementById('tenantGrowthChart').getContext('2d');
+        new Chart(ctxTenant, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May'],
+                datasets: [{
+                    label: 'Number of Tenants',
+                    data: [40, 42, 43, 44, 45],
+                    borderColor: 'rgba(52, 152, 219, 1)',
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Pie Chart: Payment Types
+        const ctxPaymentTypes = document.getElementById('paymentTypesChart').getContext('2d');
+        new Chart(ctxPaymentTypes, {
+            type: 'pie',
+            data: {
+                labels: ['Standard Payments', 'Overdue Payments'],
+                datasets: [{
+                    data: [80, 20],
+                    backgroundColor: ['rgba(46, 204, 113, 0.7)', 'rgba(231, 76, 60, 0.7)']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                return `${label}: ${value}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+   
+   <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBFYOg1Y_QGaB6Ft9HCq9Gjnm9CtDDzZlc",
+      authDomain: "rosa-heights.firebaseapp.com",
+      projectId: "rosa-heights",
+      storageBucket: "rosa-heights.firebasestorage.app",
+      messagingSenderId: "167195016594",
+      appId: "1:167195016594:web:f535511e56469ffdb5d54b",
+      measurementId: "G-K2V74M6YV0"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Log Firebase app initialization details to the console
+  console.log("Firebase App:", app);
+  </script> 
+</body>
+</html>
