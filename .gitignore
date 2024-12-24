@@ -67,3 +67,8 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# Firebase files to ignore
+firebase-debug.log
+.env
+*.service-account.json

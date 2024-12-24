@@ -42,11 +42,18 @@ CREATE TABLE Payments_Made (
     TenantID INT NOT NULL,
     Amount INT NOT NULL,
     PaymentType ENUM ('standard', 'overdue') NOT NULL,
-    PaymentDate INT NOT NULL,
+    PaymentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+);
 
 
-
-
-
+CREATE TABLE Activity_Log (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID VARCHAR NOT NULL,
+    ActivityType ENUM ('user_registration', 'user_deletion', 'payment', 'payment_data_deletion','overdue_pay_deletion') NOT NULL,
+    RelevantID INT,
+    ActivityDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    FOREIGN KEY (UserID) REFERENCES Users(ID) ON DELETE CASCADE,
 
 )
+

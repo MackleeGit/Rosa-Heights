@@ -1,0 +1,76 @@
+.content-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-container {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+#search-bar {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: var(--vivid-blue);
+    color: white;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+tbody tr:hover {
+    background-color: var(--hover-blue);
+    color: var(--dark-blue);
+}
+
+.actions-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.action-btn {
+    text-decoration: none;
+    color: white;
+    background-color: var(--vivid-blue);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: var(--hover-blue);
+}
+
+.delete-btn {
+    background-color: var(--dark-blue);
+}
+
+.delete-btn:hover {
+    background-color: var(--hover-blue);
+    color: var(--dark-blue);
+}
