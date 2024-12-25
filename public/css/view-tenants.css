@@ -20,32 +20,6 @@
     border-radius: 8px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-thead {
-    background-color: var(--vivid-blue);
-    color: white;
-}
-
-th, td {
-    text-align: left;
-    padding: 12px;
-    border: 1px solid #ccc;
-}
-
-tbody tr:nth-child(even) {
-    background-color: var(--light-gray);
-}
-
-tbody tr:hover {
-    background-color: var(--hover-blue);
-    color: var(--dark-blue);
-}
-
 .actions-container {
     display: flex;
     justify-content: center;

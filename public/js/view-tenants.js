@@ -20,8 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${tenant.FirstName || ""}</td>
                     <td>${tenant.LastName || ""}</td>
                     <td>${tenant.House || ""}</td>
-                    <td>${tenant.Rent || ""}</td>
                     <td>${tenant.Phone || ""}</td>
+                    <td>${tenant.Rent || ""}</td>
+                   
                 `;
             }
         } else {

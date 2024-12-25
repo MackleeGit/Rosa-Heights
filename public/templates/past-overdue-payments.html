@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Tenants - Rosa Heights Management System</title>
+    <title>Past Overdue Payments - Rosa Heights Management System</title>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/view-tenants.css">
-    <link rel="icon" href="../r/images/logo-inv.png" type="image/x-icon">
+    <link wirel="icon" href="../r/images/logo-inv.png" type="image/x-icon">
 </head>
+
 <body>
     <div class="head-container">
         <img class="logo" src="../r/images/logo-inv.png" alt="Logo">
-        <h5>ROSA HEIGHTS MANAGEMENT SYSTEM</h5>
+        <div class="banner">
+            <h5>ROSA HEIGHTS MANAGEMENT SYSTEM</h5>
+            <p>31/12/24</p>
+        </div> 
         <div class="user-info">
             <small>Logged in as:</small>
             <h3>Name: Caretaker</h3>
@@ -19,7 +23,7 @@
     </div>
     <div class="navbar">
         <a class="nav-item" href="caretaker-dashboard.html">Dashboard</a>
-        <a class="nav-item" href="#">This Month's Due Payments</a>
+        <a class="nav-item" href="#">Log this Month's Water Bills</a>
         <a class="nav-item" href="#">Past Overdue Payments</a>
         <a class="nav-item" href="#">Payment History</a>
         <a class="nav-item" href="#">Logout</a>
@@ -30,6 +34,8 @@
             <input type="text" id="search-bar" placeholder="Search tenants..." oninput="filterTable()">
         </div>
 
+        <h2>Overdue Payments</h2>
+
         <table id="tenants-table">
             <thead>
                 <tr>
@@ -37,10 +43,13 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>House</th>
-                    <th>Phone</th>
                     <th>Rent Per Month </th>
-                   
-                   
+                    <th>Garbage Fee (Constant)</th>
+                    <th>Water Bill</th>
+                    <th>Total Bill</th>
+                    <th>Amount Paid</th>
+                    <th>Amount Remaining</th>
+                    <th>Initiate Payment</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,8 +61,12 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a class="init-payment" href="">Handle Client Payment</a></td>
                     
-                   
                 </tr>
                 <tr>
                     <td></td>
@@ -63,7 +76,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                  
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -71,15 +85,16 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                   
-                   
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
 
         <div class="actions-container">
-            <a class="nav-item" href="#" >Add New Tenant</a>
-            <a class="nav-item" href="#" >Delete Tenant</a>
+          <p><strong>Note:</strong> Kindly ensure that the water bill is logged before the 5th day of the month. If the water bill remains "not logged", it will be assumed to be 0.</p>
         </div>
     </div>
 
@@ -91,6 +106,6 @@
    
     
     <script type="module" src="../js/firebase.js"></script>
-    <script type="module" src="../js/view-tenants.js"></script>
+   <!-- <script type="module" src="../js/view-tenants.js"></script>-->
 </body>
 </html>
