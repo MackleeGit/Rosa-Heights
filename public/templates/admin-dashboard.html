@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosa Heights Management System: Caretaker Dashboard</title>
+    <title>Rosa Heights Management System: Admin Dashboard</title>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/caretaker-dashboard.css">
      <link rel="icon" href="../r/images/logo-inv.png" type="image/x-icon"> 
@@ -27,11 +27,11 @@
         
     </div>
     <div class="navbar">
-        <a class="nav-item" href="">View Registered Tenants</a>
-        <a class="nav-item" href="">This Month's Due Payments</a>
-        <a class="nav-item" href="">Log This Month's Water Bill Payments</a>
-        <a class="nav-item" href="">View and Handle Past Overdue Payments</a>
+        <a class="nav-item" href="">View Tenant Information</a>
+        <a class="nav-item" href="">Observe All User Activity</a>
+        <a class="nav-item" href="">View All Users</a>
         <a class="nav-item" href="">View Payment History</a>
+        <a class="nav-item" href="">View Overdue Fees History</a>
         <div class="overlay" id="overlay"></div>
         <a class="nav-item" id="sidebarToggle" href="#"><i class="fas fa-bars"></i><span>aaa </span> More</a>
     </div>
@@ -56,10 +56,35 @@
     <p>Manage tenant info here!</p>
 </div>
 
-<div class="my-activity">
-    <br><br>
-    <a class="nav-item" href="">View My Activity</a>
-</div>
+    <div class="dashboard-container">
+        <div class="top-section">
+            <div class="widget" id="total-tenants">
+                <small>total tenants</small>
+                <h1 id="tenant-count">42</h1>
+            </div>
+            <div class="widget" id="overdue-payments">
+                <small>unpaid overdue payment records</small>
+                <h1 id="overdue-count">15</h1>
+            </div>
+            <div class="widget">
+                <small>date</small>
+                <h1 id="current-date">December 22, 2024</h1>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="chart-column">
+                <canvas id="overduePaymentsChart"></canvas>
+            </div>
+            <div class="chart-column">
+                <canvas id="tenantGrowthChart"></canvas>
+            </div>
+        </div>
+        <div class="pie-section">
+            <canvas id="paymentTypesChart"></canvas>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-content">
             <div class="contact-info">
@@ -69,6 +94,7 @@
             </div>
         </div>
     </footer>
+
 
     `<script>
 

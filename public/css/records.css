@@ -1,0 +1,76 @@
+/* Import General Styles */
+@import url('../css/general.css');
+
+/* Content Container */
+.content-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Controls */
+.controls-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.date-filter, .sort-options, .field-selection {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.date-filter button, .sort-options button {
+    padding: 10px 20px;
+    background-color: var(--vivid-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.date-filter button:hover, .sort-options button:hover {
+    background-color: var(--hover-blue);
+    color: var(--dark-blue);
+}
+
+.field-selection legend {
+    font-weight: bold;
+}
+
+/* Table */
+#payment-records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#payment-records-table th, #payment-records-table td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#payment-records-table thead {
+    background-color: var(--vivid-blue);
+    color: white;
+}
+
+#payment-records-table tbody tr:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+#payment-records-table tbody tr:hover {
+    background-color: var(--hover-blue);
+    color: var(--dark-blue);
+}
+

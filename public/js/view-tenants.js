@@ -53,3 +53,32 @@ function filterTable() {
 }
 
 document.getElementById("search-bar").addEventListener("input", filterTable);
+
+
+
+// Function to confirm deletion of a tenant
+function confirmDeletion(tenantName, tenantID) {
+    const confirmation = confirm(
+        `Are you sure you wish to delete tenant ${tenantName} and all their records? This cannot be undone.`
+    );
+
+    if (confirmation) {
+        // Placeholder for actual deletion logic
+        console.log(`Tenant ${tenantName} (ID: ${tenantID}) deleted.`);
+
+        // Reload page to reflect changes
+        location.reload();
+    }
+}
+
+// Optional: Functionality to filter the tenants table
+function filterTable() {
+    const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+    const rows = document.querySelectorAll('#tenants-table tbody tr');
+
+    rows.forEach(row => {
+        const rowText = row.textContent.toLowerCase();
+        row.style.display = rowText.includes(searchQuery) ? '' : 'none';
+    });
+}
+

@@ -37,7 +37,6 @@ CREATE TABLE Past_Due_Rent (
 );
 
 CREATE TABLE Payments_Made (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
     PaymentID INT NOT NULL,
     TenantID INT NOT NULL,
     Amount INT NOT NULL,
