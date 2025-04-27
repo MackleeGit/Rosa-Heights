@@ -1,6 +1,4 @@
-// Import Firebase components from firebase.js
-import { db } from "./firebase.js";
-import { ref, set, get } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+import { supabase } from "./supabase.js"; // Import the Supabase client
 
 // Select the form element
 const tenantForm = document.getElementById("tenantForm");
@@ -10,47 +8,42 @@ tenantForm.addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent default form behavior
 
     // Collect form data
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
-    const house = document.getElementById("house").value;
-    const phone = document.getElementById("phone").value;
-    const rent = document.getElementById("rent").value;
-    const garbageBill = document.getElementById("garbageBill").value;
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const house = document.getElementById("house").value.trim();
+    const rent = parseFloat(document.getElementById("rent").value);
 
-    // Reference to the tenants in the database
-    const tenantsRef = ref(db, "Tenants");
+    // Validate required fields
+    if (!firstName || !lastName || !email || !phone || !house || isNaN(rent) || rent <= 0) {
+        alert("Please fill in all fields correctly.");
+        return;
+    }
 
     try {
-        // Fetch existing tenants to auto-generate TenantID
-        const snapshot = await get(tenantsRef);
-        const tenantCount = snapshot.exists() 
-            ? Object.keys(snapshot.val()).length + 1 
-            : 1; // If no tenants exist yet, start from 1
+        // Insert tenant into the "Tenants" table
+        const { data, error } = await supabase.from("tenants").insert([
+            {
+                firstname: firstName,
+                lastname: lastName,
+                email: email,
+                phone: phone,
+                house: house,
+                rent: rent
+            }
+        ]);
 
-        // Set the data to Firebase Realtime Database
-        await set(ref(db, "Tenants/" + tenantCount), {
-            TenantID: tenantCount,
-            FirstName: firstName,
-            LastName: lastName,
-            House: house,
-            Phone: phone,
-            Rent: rent,
-            GarbageBill: garbageBill
-        });
+        if (error) throw error;
 
-        // Redirect first, then show the alert
-        window.location.href = "view-tenants.html";
+        console.log("Tenant added:", data);
 
-        // Delay alert after redirection
-        setTimeout(() => {
-            alert("New Tenant Successfully Added!");
-        }, 500);
-
+        if (confirm("New Tenant Successfully Added! Click OK to continue.")) {
+            window.location.href = "view-tenants.html";
+        }
+        
     } catch (error) {
-        console.error("Error adding tenant: ", error);
+        console.error("Error adding tenant:", error.message);
         alert("Failed to add tenant. Please try again.");
     }
 });
-
-
-//Add input validation and dupicate checks here

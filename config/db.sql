@@ -1,58 +1,58 @@
-CREATE TABLE Users (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
-    Password VARCHAR(255) NOT NULL,
-    Role ENUM('admin', 'caretaker') NOT NULL,
-    DateAdded TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
 CREATE TABLE Tenants (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    FirstName VARCHAR(255) NOT NULL,
-    LastName VARCHAR(255) NOT NULL,
-    Email VARCHAR(255) NOT NULL,
-    Rent DECIMAL(10, 2) NOT NULL,
-    Phone VARCHAR(20),
-    RoomNumber VARCHAR(50)
+    TenantID SERIAL PRIMARY KEY, -- Auto-incrementing ID
+    FirstName TEXT NOT NULL,
+    LastName TEXT NOT NULL, -- Fixed `LastNameT` typo
+    Email TEXT UNIQUE NOT NULL CHECK (Email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
+    Rent DECIMAL(10,2) NOT NULL,
+    Phone VARCHAR(20) UNIQUE NOT NULL, -- Fixed UNIQUE placement
+    RoomNumber VARCHAR(50) UNIQUE -- Fixed UNIQUE placement
 );
 
-CREATE TABLE Current_Month_Rent (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
+
+CREATE TABLE Current_Month_Due (
+    CurrentMonthDueID SERIAL PRIMARY KEY,
     TenantID INT NOT NULL,
-    Rent DECIMAL(10, 2) NOT NULL,
-    RentPaid DECIMAL(10, 2) NOT NULL DEFAULT 0,
-    RentDue DECIMAL(10, 2) NOT NULL,
+    WaterBill DECIMAL(10, 2) NOT NULL,
+    GarbageBill DECIMAL(10, 2) NOT NULL,
+    AmountPaid DECIMAL(10, 2) NOT NULL DEFAULT 0,
     MonthDue VARCHAR(50) NOT NULL,
-    FOREIGN KEY (TenantID) REFERENCES Tenants(ID) ON DELETE CASCADE
+    FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) ON DELETE CASCADE
 );
 
-CREATE TABLE Past_Due_Rent (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Overdue_Pay_Instance (
+    OverduePayID SERIAL PRIMARY KEY,
     TenantID INT NOT NULL,
-    TotalRent DECIMAL(10, 2) NOT NULL,
-    RentPaid DECIMAL(10, 2) NOT NULL DEFAULT 0,
-    RentDue DECIMAL(10, 2) NOT NULL,
-    Month VARCHAR(50) NOT NULL,
-    FOREIGN KEY (TenantID) REFERENCES Tenants(ID) ON DELETE CASCADE
+    WaterBill DECIMAL(10, 2) NOT NULL,
+    GarbageBill DECIMAL(10, 2) NOT NULL,
+    AmountPaidByDelay DECIMAL(10, 2) NOT NULL,
+    AmountPaid DECIMAL(10, 2) NOT NULL,
+    MonthDue VARCHAR(50) NOT NULL,
+    FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) ON DELETE CASCADE
 );
 
-CREATE TABLE Payments_Made (
-    PaymentID INT NOT NULL,
+
+CREATE TABLE OverduePayments (
+    OvdPaymentID SERIAL PRIMARY KEY,
+    OverduePayID INT NOT NULL,
     TenantID INT NOT NULL,
-    Amount INT NOT NULL,
-    PaymentType ENUM ('standard', 'overdue') NOT NULL,
+    AmountPaid DECIMAL(10, 2) NOT NULL,
     PaymentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
+    FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) ON DELETE CASCADE,
+    FOREIGN KEY (OverduePayID) REFERENCES Overdue_Pay_Instance(OverduePayID) ON DELETE CASCADE
 );
+
 
 
 CREATE TABLE Activity_Log (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID VARCHAR NOT NULL,
-    ActivityType ENUM ('user_registration', 'user_deletion', 'payment', 'payment_data_deletion','overdue_pay_deletion') NOT NULL,
+    ActivityID SERIAL PRIMARY KEY,
+    UserID INT,
+    ActivityType TEXT NOT NULL CHECK (ActivityType IN (
+        'user_registration', 'user_deletion', 'standard_payment',
+        'overdue_payment', 'standard_pay_deletion', 'overdue_pay_deletion',
+        'monthly_refresh'
+    )),
     RelevantID INT,
-    ActivityDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    FOREIGN KEY (UserID) REFERENCES Users(ID) ON DELETE CASCADE,
-
-)
-
+    ActivityDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES Users(ID) ON DELETE CASCADE
+);

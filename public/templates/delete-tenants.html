@@ -9,7 +9,6 @@
     <link rel="icon" href="../r/images/logo-inv.png" type="image/x-icon">
 </head>
 <body>
-    <!-- Header -->
     <div class="head-container">
         <img class="logo" src="../r/images/logo-inv.png" alt="Logo">
         <h5>ROSA HEIGHTS MANAGEMENT SYSTEM</h5>
@@ -19,58 +18,49 @@
         </div>
     </div>
 
-    <!-- Navbar -->
     <div class="navbar">
         <a class="nav-item" href="caretaker-dashboard.html">Dashboard</a>
-        <a class="nav-item" href="#">This Month's Due Payments</a>
-        <a class="nav-item" href="#">Past Overdue Payments</a>
-        <a class="nav-item" href="#">Payment History</a>
-        <a class="nav-item" href="#">Logout</a>
+        <a class="nav-item" href="view-tenants.html">Back to Tenants Table</a>
+       
     </div>
 
-    <!-- Content -->
     <div class="content-container">
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Search tenants..." oninput="filterTable()">
-        </div>
+        <h2>Delete Tenants</h2>
+        <p>Select tenants to delete and confirm your action.</p>
 
-        <!-- Tenants Table -->
         <table id="tenants-table">
             <thead>
                 <tr>
+                    <th>Select</th>
                     <th>TenantID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>House</th>
                     <th>Phone</th>
                     <th>Rent Per Month</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Example row -->
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>A-101</td>
-                    <td>+123456789</td>
-                    <td>$500</td>
-                    <td><a href="#" class="action-btn delete-btn" onclick="confirmDeletion('John Doe', 1)">Delete Tenant</a></td>
-                </tr>
-                <!-- Add more rows dynamically -->
+                <!-- Rows will be inserted by JavaScript -->
             </tbody>
         </table>
+
+        <div class="actions-container">
+            <button id="delete-btn" class="delete-button">Delete Selected Tenants</button>
+           
+        </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Rosa Heights Management System. All rights reserved.</p>
+            <div class="contact-info">
+                <p><i class="fas fa-phone-alt"></i> +254 XXXX XXXX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rosa Heights, Kiambu, Kenya</p>
+                <p><i class="fas fa-envelope"></i> mrkleecodes@gmail.com</p>
+            </div>
         </div>
     </footer>
 
-    <script type="module" src="../js/firebase.js"></script>
-    <script type="module" src="../js/view-tenants.js"></script>
+    <script type="module" src="../js/delete-tenants.js"></script>
 </body>
 </html>

@@ -22,62 +22,24 @@
     <!-- Navbar -->
     <div class="navbar">
         <a class="nav-item" href="caretaker-dashboard.html">Dashboard</a>
-        <a class="nav-item" href="#">This Month's Due Payments</a>
-        <a class="nav-item" href="#">Past Overdue Payments</a>
-        <a class="nav-item" href="#">Payment History</a>
-        <a class="nav-item" href="#">Logout</a>
+        <a class="nav-item" href="this-month-due-pay.html">This Month's Due Payments</a>
+        <a class="nav-item" href="unpaid-overdue.html">Overdues</a>
     </div>
 
     <!-- Content -->
     <div class="content-container">
         <h2>Payment Records</h2>
         <div class="controls-container">
-            <!-- Date Filter -->
-            <div class="date-filter">
-                <label for="start-date">Start Date:</label>
-                <input type="date" id="start-date">
-                <label for="end-date">End Date:</label>
-                <input type="date" id="end-date">
-                <button onclick="applyDateFilter()">Apply Filter</button>
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Search tenants...">
             </div>
-
-            <!-- Field Selection -->
-            <fieldset class="field-selection">
-                <legend>Select Fields to Display:</legend>
-                <label><input type="checkbox" value="paymentID" checked> Payment ID</label>
-                <label><input type="checkbox" value="firstName" checked> First Name</label>
-                <label><input type="checkbox" value="lastName" checked> Last Name</label>
-                <label><input type="checkbox" value="amount" checked> Amount</label>
-                <label><input type="checkbox" value="paymentType" checked> Payment Type</label>
-                <label><input type="checkbox" value="month" checked> For Which Month</label>
-                <label><input type="checkbox" value="paymentDate" checked> Date of Payment</label>
-            </fieldset>
-
-            <!-- Sort Options -->
-            <div class="sort-options">
-                <label for="sort-field">Sort By:</label>
-                <select id="sort-field">
-                    <option value="paymentID">Payment ID</option>
-                    <option value="paymentID">Payment ID</option>
-                    <option value="firstName">First Name</option>
-                    <option value="lastName">Last Name</option>
-                    <option value="amount">Amount</option>
-                    <option value="paymentType">Payment Type</option>
-                    <option value="month">For Which Month</option>
-                    <option value="paymentDate">Date of Payment</option>
-                </select>
-                <label><input type="radio" name="sort-order" value="asc" checked> Ascending</label>
-                <label><input type="radio" name="sort-order" value="desc"> Descending</label>
-                <button onclick="applySort()">Sort</button>
-            </div>
-        </div>
-
+    
         <!-- Payment Records Table -->
         <table id="payment-records-table">
             <thead>
                 <tr>
                     <th>Payment ID</th>
-                    <th>TenantID</th>>
+                    <th>TenantID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>House</th>
@@ -97,10 +59,13 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Rosa Heights Management System. All rights reserved.</p>
+            <div class="contact-info">
+                <p><i class="fas fa-phone-alt"></i> +254 XXXX XXXX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rosa Heights, Kiambu, Kenya</p>
+                <p><i class="fas fa-envelope"></i> mrkleecodes@gmail.com</p>
+            </div>
         </div>
     </footer>
-
     <script type="module" src="../js/firebase.js"></script>
     <script type="module" src="../js/payment-records.js"></script>
 </body>

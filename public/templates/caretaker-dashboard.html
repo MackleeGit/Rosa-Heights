@@ -27,11 +27,10 @@
         
     </div>
     <div class="navbar">
-        <a class="nav-item" href="">View Registered Tenants</a>
-        <a class="nav-item" href="">This Month's Due Payments</a>
-        <a class="nav-item" href="">Log This Month's Water Bill Payments</a>
-        <a class="nav-item" href="">View and Handle Past Overdue Payments</a>
-        <a class="nav-item" href="">View Payment History</a>
+        <a class="nav-item" href="view-tenants.html">View Registered Tenants</a>
+        <a class="nav-item" href="this-month-due-pay.html">This Month's Due Payments</a>
+        <a class="nav-item" href="unpaid-overdue.html">Overdue Fees</a>
+        <a class="nav-item" href="payment-records.html">View Payment History</a>
         <div class="overlay" id="overlay"></div>
         <a class="nav-item" id="sidebarToggle" href="#"><i class="fas fa-bars"></i><span>aaa </span> More</a>
     </div>
@@ -60,122 +59,15 @@
     <br><br>
     <a class="nav-item" href="">View My Activity</a>
 </div>
-    <footer>
-        <div class="footer-content">
-            <div class="contact-info">
-                <p><i class="fas fa-phone-alt"></i> +123 456 789</p>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Rosa Heights St, Cityville</p>
-                <p><i class="fas fa-envelope"></i> info@rosaheights.com</p>
-            </div>
+<footer>
+    <div class="footer-content">
+        <div class="contact-info">
+            <p><i class="fas fa-phone-alt"></i> +254 XXXX XXXX</p>
+            <p><i class="fas fa-map-marker-alt"></i> Rosa Heights, Kiambu, Kenya</p>
+            <p><i class="fas fa-envelope"></i> mrkleecodes@gmail.com</p>
         </div>
-    </footer>
-
-    `<script>
-
-        //Sidebar Info
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarClose = document.getElementById('sidebarClose');
-
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.add('active');
-            overlay.classList.add('active');
-        });
-
-        sidebarClose.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        overlay.addEventListener('click',()=>{
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-
-        })
-
-
-
-        // Display Current Date
-        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-GB');
-
-        // Widgets Data
-        document.getElementById('tenant-count').textContent = 45; // Example tenant count
-        document.getElementById('overdue-count').textContent = 12; // Example overdue count
-
-        // Bar Chart: Overdue Payments
-        const ctxOverdue = document.getElementById('overduePaymentsChart').getContext('2d');
-        new Chart(ctxOverdue, {
-            type: 'bar',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May'],
-                datasets: [{
-                    label: 'Overdue Payments',
-                    data: [5, 7, 8, 6, 12],
-                    backgroundColor: 'rgba(41, 128, 185, 0.7)',
-                    borderColor: 'rgba(41, 128, 185, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { beginAtZero: true }
-                }
-            }
-        });
-
-        // Line Chart: Tenant Growth
-        const ctxTenant = document.getElementById('tenantGrowthChart').getContext('2d');
-        new Chart(ctxTenant, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May'],
-                datasets: [{
-                    label: 'Number of Tenants',
-                    data: [40, 42, 43, 44, 45],
-                    borderColor: 'rgba(52, 152, 219, 1)',
-                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                    fill: true,
-                    tension: 0.3
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { beginAtZero: true }
-                }
-            }
-        });
-
-        // Pie Chart: Payment Types
-        const ctxPaymentTypes = document.getElementById('paymentTypesChart').getContext('2d');
-        new Chart(ctxPaymentTypes, {
-            type: 'pie',
-            data: {
-                labels: ['Standard Payments', 'Overdue Payments'],
-                datasets: [{
-                    data: [80, 20],
-                    backgroundColor: ['rgba(46, 204, 113, 0.7)', 'rgba(231, 76, 60, 0.7)']
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function (context) {
-                                const label = context.label || '';
-                                const value = context.raw || 0;
-                                return `${label}: ${value}%`;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-
+    </div>
+</footer>
    
 <script type="module" src="../js/firebase.js"></script>
 </body>

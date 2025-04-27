@@ -6,6 +6,7 @@
     <title>Past Overdue Payments - Rosa Heights Management System</title>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/view-tenants.css">
+    <link rel="stylesheet" href="../css/records.css">
     <link wirel="icon" href="../r/images/logo-inv.png" type="image/x-icon">
 </head>
 
@@ -23,26 +24,27 @@
     </div>
     <div class="navbar">
         <a class="nav-item" href="caretaker-dashboard.html">Dashboard</a>
-        <a class="nav-item" href="#">Log this Month's Water Bills</a>
-        <a class="nav-item" href="#">Past Overdue Payments</a>
-        <a class="nav-item" href="#">Payment History</a>
-        <a class="nav-item" href="#">Logout</a>
+        <a class="nav-item" href="payment-records.html">Payment History</a>
+      
     </div>
 
     <div class="content-container">
         <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Search tenants..." oninput="filterTable()">
+            <input type="text" id="search-bar" placeholder="Search record" oninput="filterTable()">
         </div>
 
         <h2>Overdue Payments</h2>
 
-        <table id="tenants-table">
+        <table id="overdue-table">
             <thead>
                 <tr>
+                    <th class="unique-id">Record ID</th>
                     <th>TenantID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>House</th>
+                    <th>Amount Paid by Delay Time</th>
+                    <th>Month Due</th>
                     <th>Rent Per Month </th>
                     <th>Garbage Fee (Constant)</th>
                     <th>Water Bill</th>
@@ -94,18 +96,22 @@
         </table>
 
         <div class="actions-container">
-          <p><strong>Note:</strong> Kindly ensure that the water bill is logged before the 5th day of the month. If the water bill remains "not logged", it will be assumed to be 0.</p>
+          <p><strong>Note:</strong>These records of late payment will remain for future reference</p>
         </div>
     </div>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Rosa Heights Management System. All rights reserved.</p>
+            <div class="contact-info">
+                <p><i class="fas fa-phone-alt"></i> +254 XXXX XXXX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rosa Heights, Kiambu, Kenya</p>
+                <p><i class="fas fa-envelope"></i> mrkleecodes@gmail.com</p>
+            </div>
         </div>
     </footer>
    
     
     <script type="module" src="../js/firebase.js"></script>
-   <!-- <script type="module" src="../js/view-tenants.js"></script>-->
+    <script type="module" src="../js/unpaid-overdue.js">defer</script>
 </body>
 </html>

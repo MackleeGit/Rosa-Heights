@@ -20,20 +20,19 @@
     </div>
     <div class="navbar">
         <a class="nav-item" href="caretaker-dashboard.html">Dashboard</a>
-        <a class="nav-item" href="#">Log this Month's Water Bills</a>
-        <a class="nav-item" href="#">Past Overdue Payments</a>
-        <a class="nav-item" href="#">Payment History</a>
-        <a class="nav-item" href="#">Logout</a>
+        <a class="nav-item" href="unpaid-overdue.html">Past Overdue Payments</a>
+        <a class="nav-item" href="payment-records.html">Payment History</a>
+        
     </div>
 
     <div class="content-container">
         <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Search tenants..." oninput="filterTable()">
+            <input type="text" id="search-bar" placeholder="Search tenants...">
         </div>
 
         <h2>Tenant Dues: December 2025</h2>
 
-        <table id="tenants-table">
+        <table id="due-pay-table">
             <thead>
                 <tr>
                     <th>TenantID</th>
@@ -92,17 +91,25 @@
 
         <div class="actions-container">
           <p><strong>Note:</strong> Kindly ensure that the water bill is logged before the 5th day of the month. If the water bill remains "not logged", it will be assumed to be 0.</p>
+          <button id="move-overdue-btn">Move Overdue Payments</button>
+<button id="restart-payment-btn">Restart New Payment Batch</button>
+
         </div>
     </div>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Rosa Heights Management System. All rights reserved.</p>
+            <div class="contact-info">
+                <p><i class="fas fa-phone-alt"></i> +254 XXXX XXXX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rosa Heights, Kiambu, Kenya</p>
+                <p><i class="fas fa-envelope"></i> mrkleecodes@gmail.com</p>
+            </div>
         </div>
     </footer>
    
     
     <script type="module" src="../js/firebase.js"></script>
-   <!-- <script type="module" src="../js/view-tenants.js"></script>-->
+   <script type="module" src="../js/this-month-due-pay.js" defer></script>
+
 </body>
 </html>
